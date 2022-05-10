@@ -1,10 +1,8 @@
 import sys
-docs_words = []
+word2count={}
 for line in sys.stdin:
-    word2count={}
     line=line.strip()
     word,count=line.split('\t',1)
-    print(word)
     try:
         count=int(count)
     except ValueError:
@@ -14,10 +12,7 @@ for line in sys.stdin:
         word2count[word]=word2count[word]+count
     except:
         word2count[word]=count
-    finally:
-        docs_words.append(word2count)
-print(len(docs_words))
-for word2count in docs_words:
-    for word in word2count.keys():
-        w='%s\t%s' % (word,word2count[word])
-        print(w)
+
+for word in word2count.keys():
+    w='%s\t%s' % (word,word2count[word]) 
+    print(w)
